@@ -1,0 +1,34 @@
+.category {
+  height: 350px;
+  width: 320px;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.category img {
+  width: 100%;
+  object-fit: contain;
+  max-height: 250px;
+  padding: 0px 10px;
+}
+.category a {
+  text-decoration: none;
+  color: rgb(35, 35, 35);
+}
+.category h3,
+.category p {
+  padding: 10px;
+  margin-left: 15px;
+  text-align: center;
+}
+.specialItem img {margin-bottom: 50px;
+background-color: blue;}
+/* CategoryMain css */
+.categoryContainer {
+  position: relative;
+  margin-top: -10%;
+  margin-inline: 50px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  place-items: center;
+}

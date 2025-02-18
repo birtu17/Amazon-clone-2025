@@ -1,0 +1,145 @@
+/* Header component css */
+.logoContainer,
+.delivery,
+.search,
+.orderContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.headerContainer {
+  background-color: #1a1a1a;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  color: white;
+  height: 70px;
+}
+.logoContainer {
+  max-width: 250px;
+}
+.logoContainer img {
+  width: 80%;
+  padding-top: 5px;
+  margin-left: 20px;
+  vertical-align: middle;
+}
+.delivery {
+  gap: 3px;
+  font-weight: bold;
+  padding: 5px;
+}
+.delivery p {
+  font-size: 10px;
+}
+.search {
+  border-radius: 10px;
+  overflow: hidden;
+  width: 100%;
+  flex: 1;
+}
+.search select,
+.search input {
+  padding: 10px;
+  font-weight: bold;
+  outline: 1px solid white;
+}
+.search select {
+  border: none;
+}
+.search input {
+  border: 1px solid white;
+  width: 100%;
+  margin-right: -2px;
+}
+.search svg {
+  padding: 10.8px;
+  background: #febd69;
+  color: #1a1a1a;
+}
+.search svg:hover {
+  background-color: #d49644;
+}
+.search:focus-within {
+  border: 2px solid rgb(235, 161, 173);
+}
+.orderContainer {
+  max-width: 450px;
+  gap: 10px;
+  padding-right: 15px;
+}
+.orderContainer a {
+  text-decoration: none;
+  color: white;
+}
+.orderContainer p {
+  font-size: 10px;
+}
+.flag {
+  width: 100px;
+  display: flex;
+  padding: 10px;
+}
+.flag select {
+  background-color: #1a1a1a;
+  border: none;
+  color: white;
+}
+.flag img {
+  width: 40%;
+}
+.cart {
+  position: relative;
+  font-size: 30px;
+}
+.cart span {
+  position: absolute;
+  font-weight: bold;
+  top: -5px;
+  font-size: 15px;
+  background-color: #1a1a1a;
+  left: 15px;
+  color: orange;
+}
+.orderContainer a:hover,
+.delivery:hover,
+.logoContainer a:hover,
+.lowerContainer ul li:hover {
+  border: 1px solid white;
+  border-radius: 3px;
+  padding: 0.5rem;
+}
+
+/* lower container css or LowerHeader component css*/
+.lowerContainer {
+  background-color: #232f3e;
+  color: white;
+}
+.lowerContainer ul {
+  display: flex;
+  list-style: none;
+  gap: 5px;
+}
+.lowerContainer ul li {
+  padding: 8px;
+}
+.lowerContainer ul li:first-child {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+}
+
+@media screen and (max-width: 576px) {
+  .headerContainer {
+    display: flex;
+    flex-direction: column !important;
+    height: auto;
+  }
+  .lowerContainer ul li:not(:first-child) {
+    display: none;
+  }
+  .flag {
+    display: none;
+  }
+}

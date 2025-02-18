@@ -1,0 +1,56 @@
+.cardContainer {
+  width: 215px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  color: black;
+  background-color: #ffffff;
+  text-decoration: none;
+  position: relative;
+}
+.cardContainer:hover .button {
+  display: block;
+}
+
+.cardContainer img {
+  padding: 10px;
+  width: 100%;
+  height: 180px;
+  object-fit: contain;
+}
+.cardBottom {
+  padding-left: 15px;
+  line-height: 1.2;
+  width: 100%;
+}
+.button {
+  display: none;
+  padding: 5px 10px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  background-color: var(--primary-color);
+  width: 80%;
+  margin: 10px 0;
+  border-radius: 30px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.button:hover {
+  background-color: var(--primary-shade);
+}
+.rating {
+  display: flex;
+  align-items: center;
+  padding: 10px 0px;
+}
+.productsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  max-width: 1450px;
+  margin: 80px 180px;
+  gap: 40px;
+  justify-items: center;
+}
+.productsContainer section {
+  margin: 0 auto;
+}
