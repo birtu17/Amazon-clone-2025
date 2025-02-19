@@ -1,8 +1,8 @@
 export const categoryInfo = [
   {
-    title: "Silicon Power 256GB SSD",
+    title: "WD 4TB Gaming Drive ",
     name: "electronics",
-    imageLink: "https://fakestoreapi.com/img/71kWymZ+c+L._AC_SX679_.jpg",
+    imageLink: "https://fakestoreapi.com/img/61mtL65D4cL._AC_SX679_.jpg",
   },
 
   {

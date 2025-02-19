@@ -10,6 +10,7 @@
   object-fit: contain;
   max-height: 250px;
   padding: 0px 10px;
+  background-color: #ffffff;
 }
 .category a {
   text-decoration: none;

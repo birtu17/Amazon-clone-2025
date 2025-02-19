@@ -4,35 +4,46 @@ import { useParams } from "react-router";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import ProductCard from "../../components/Product/ProductCard";
-import {productUrl} from "../../Api/endPoints"
+import { productUrl } from "../../Api/endPoints";
+import Loader from "../../components/Loader/Loader";
 
 const Results = () => {
   const { categoryName } = useParams();
   console.log(categoryName);
   const [results, setResults] = useState([]);
+  const [isLoading, setLoading] = useState(false);
   useEffect(() => {
-    axios.get(`${productUrl}/products/category/${categoryName}`)
-      .then((res) => {console.log(res);
+    setLoading(true);
+    axios
+      .get(`${productUrl}/products/category/${categoryName}`)
+      .then((res) => {
+        console.log(res);
 
         setResults(res.data);
+        setLoading(false);
       })
       .catch((err) => {
         console.log(err);
+        setLoading(false);
       });
   }, []);
 
   return (
     <LayOut>
-      <section>
-        <h1 style={{ padding: "30px" }}>Results</h1>
-        <p style={{ padding: "30px" }}>Category/{categoryName}</p>
-        <hr/>
-        <div className={style.productsContainer}>
-          {results?.map((product) => (
-            <ProductCard  product={product} />
-          ))}
-        </div>
-      </section>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <section>
+          <h1 style={{ padding: "30px" }}>Results</h1>
+          <p style={{ padding: "30px" }}>Category/{categoryName}</p>
+          <hr />
+          <div className={style.productsContainer}>
+            {results?.map((product) => (
+              <ProductCard product={product} />
+            ))}
+          </div>
+        </section>
+      )}
     </LayOut>
   );
 };
