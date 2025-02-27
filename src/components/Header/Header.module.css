@@ -1,4 +1,11 @@
 /* Header component css */
+
+.stickyHeader {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
 .logoContainer,
 .delivery,
 .search,
@@ -47,6 +54,7 @@
 }
 .search select {
   border: none;
+  background-color: #dfdfdf;
 }
 .search input {
   border: 1px solid white;
@@ -55,8 +63,9 @@
 }
 .search svg {
   font-size: 38px;
-  padding: 7px;
+  padding: 8px;
   background: #febd69;
+  font-weight: bolder;
   color: #1a1a1a;
 }
 .search svg:hover {
@@ -107,7 +116,7 @@
 .delivery:hover,
 .logoContainer a:hover,
 .lowerContainer ul li:hover {
-  border: 1px solid white;
+  outline: 1px solid white;
   border-radius: 3px;
   padding: 0.5rem;
 }

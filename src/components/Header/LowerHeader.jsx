@@ -1,4 +1,3 @@
-
 import { IoIosMenu } from "react-icons/io";
 import style from "./Header.module.css";
 const LowerHeader = () => {
@@ -13,10 +12,10 @@ const LowerHeader = () => {
         <li>Costumer Service</li>
         <li>Registry</li>
         <li>Gift cards</li>
-        <li>sell</li>
+        <li>Sell</li>
       </ul>
     </div>
   );
-}
+};
 
-export default LowerHeader
+export default LowerHeader;

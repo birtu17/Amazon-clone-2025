@@ -8,7 +8,6 @@ const CategoryMain = () => {
         <CategoryCard
           key={index}
           data={info}
-          // className={index === 1 && "specialItem"}
         />
       ))}
     </div>

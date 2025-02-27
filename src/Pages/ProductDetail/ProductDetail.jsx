@@ -30,7 +30,7 @@ const ProductDetail = () => {
       {isLoading ? (
         <Loader />
       ) : (
-        <ProductCard product={products} flex={true} renderDesc={true} />
+        <ProductCard product={products} flex={true} renderDesc={true} renderAdd={true}/>
       )}
     </LayOut>
   );

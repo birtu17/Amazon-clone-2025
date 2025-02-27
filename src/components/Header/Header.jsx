@@ -6,10 +6,15 @@ import { FiShoppingCart } from "react-icons/fi";
 import style from "./Header.module.css";
 import { Link } from "react-router";
 import LowerHeader from "./LowerHeader";
-
+import { useContext } from "react";
+import { DataContext } from "../DataProvider/DataProvider";
 const Header = () => {
+  const [{ basket }, dispatch] = useContext(DataContext);
+  const totalItem = basket?.reduce((amount, item) => {
+    return item.amount + amount;
+  }, 0);
   return (
-    <>
+    <section className={style.stickyHeader}>
       <section>
         <div className={style.headerContainer}>
           <div className={style.logoContainer}>
@@ -53,13 +58,13 @@ const Header = () => {
             </Link>
             <Link to="/cart" className={style.cart}>
               <FiShoppingCart />
-              <span>0</span>
+              <span>{totalItem}</span>
             </Link>
           </div>
         </div>
       </section>
-      <LowerHeader/>
-    </>
+      <LowerHeader />
+    </section>
   );
 };
 
