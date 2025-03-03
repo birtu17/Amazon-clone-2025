@@ -7,9 +7,9 @@
   font-family: var(--font-family);
 }
 
-body {
+/* body {
   background-color: #e3e6e6;
-}
+} */
 
 :root {
   --primary-color: #febd69;
