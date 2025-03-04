@@ -16,9 +16,6 @@ const ProductCard = ({ product, flex, renderDesc,renderAdd }) => {
    });
  };
 
-
-
-
   return (
     <div className={`${style.cardContainer} ${flex ? style.productsFlex : ""}`}>
       <Link to={`/products/${id}`}>

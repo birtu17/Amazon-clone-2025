@@ -3,6 +3,7 @@
   width: 320px;
   background-color: #ffffff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  position: relative;
 }
 
 .category img {
@@ -16,18 +17,27 @@
   text-decoration: none;
   color: rgb(35, 35, 35);
 }
+
+.category p {
+  color: #1791dd;
+  position: absolute;
+  left: 0;
+}
+
 .category h3,
 .category p {
   padding: 10px;
   margin-left: 15px;
   text-align: center;
 }
-.specialItem img {margin-bottom: 50px;
-background-color: blue;}
+.specialItem img {
+  margin-bottom: 50px;
+  background-color: blue;
+}
 /* CategoryMain css */
 .categoryContainer {
   position: relative;
-  margin-top: -20%;
+  margin-top: -18%;
   margin-inline: 50px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);

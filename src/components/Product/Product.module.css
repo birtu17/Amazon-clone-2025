@@ -1,5 +1,6 @@
 .cardContainer {
-  width: 215px;
+  width: 250px;
+  height: auto;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   color: black;
   background-color: #ffffff;
@@ -28,8 +29,8 @@
   border: none;
   cursor: pointer;
   background-color: var(--primary-color);
-  width: 80%;
-  margin: 10px 0;
+  width: 100%;
+  margin-top: 40px;
   border-radius: 30px;
   position: absolute;
   bottom: 0;
@@ -48,14 +49,13 @@
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   max-width: 1450px;
   margin: 80px 180px;
-  gap: 40px;
+  gap: 80px;
   justify-items: center;
 }
 .productsContainer section {
   margin: 0 auto;
 }
 .productsFlex {
-  background-color: #e3e6e6;
   box-shadow: none;
   height: auto;
   display: flex;
@@ -73,7 +73,6 @@
   margin-right: 40px;
 }
 .productsFlex img {
-  background-color: #e3e6e6;
   width: 300px !important;
   height: auto;
 }
