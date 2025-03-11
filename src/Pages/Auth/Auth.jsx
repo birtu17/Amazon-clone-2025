@@ -1,5 +1,5 @@
 import style from "./Auth.module.css";
-import { Link, useNavigate } from "react-router"; 
+import { Link, useNavigate, useLocation } from "react-router";
 import logo from "../../assets/image/amazon_black_logo.png";
 import { useState, useContext } from "react";
 import {
@@ -19,6 +19,7 @@ const Auth = () => {
 
   const [{ user }, dispatch] = useContext(DataContext);
   const navigate = useNavigate();
+  const navStateData = useLocation();
 
   // Handle SignIn
   const handleSignIn = async (e) => {
@@ -28,7 +29,7 @@ const Auth = () => {
       const userInfo = await signInWithEmailAndPassword(auth, email, password);
       dispatch({ type: Type.SET_USER, user: userInfo.user });
       setLoading((prevState) => ({ ...prevState, signin: false }));
-      navigate("/"); // Navigate after successful sign-in
+      navigate(navStateData?.state?.redirect || "/"); // Navigate after successful sign-in
     } catch (err) {
       setError(err.message);
       setLoading((prevState) => ({ ...prevState, signin: false }));
@@ -47,7 +48,7 @@ const Auth = () => {
       );
       dispatch({ type: Type.SET_USER, user: userInfo.user });
       setLoading((prevState) => ({ ...prevState, signup: false }));
-      navigate("/"); 
+      navigate(navStateData?.state?.redirect || "/");
     } catch (err) {
       setError(err.message);
       setLoading((prevState) => ({ ...prevState, signup: false }));
@@ -61,6 +62,18 @@ const Auth = () => {
       </Link>
       <div className={style.loginContainer}>
         <h1>Sign-in</h1>
+        {navStateData?.state?.msg && (
+          <small
+            style={{
+              padding: "5px",
+              textAlign: "center",
+              color: "red",
+              fontWeight: "bold",
+            }}
+          >
+            {navStateData?.state?.msg}
+          </small>
+        )}
 
         {/* SignIn Form */}
         <form onSubmit={handleSignIn}>

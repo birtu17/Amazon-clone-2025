@@ -50,6 +50,13 @@
 .paymentDetails button:hover {
   background-color: var(--primary-shade);
 }
+.loader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  color: rgb(52, 52, 52);
+}
 
 @media screen and (max-width: 768px) {
   .flex {

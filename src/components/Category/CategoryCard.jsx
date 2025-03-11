@@ -1,7 +1,6 @@
 import style from "./Category.module.css";
 import { Link } from "react-router";
 const CategoryCard = ({data}) => {
-  console.log(data);
 
   return (
     <div className={style.category}>

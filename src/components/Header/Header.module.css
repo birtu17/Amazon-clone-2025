@@ -58,8 +58,8 @@
 }
 .search input {
   border: 1px solid white;
-  width: 100%;
-  margin-right: -2px;
+  width: 90%;
+  /* margin-right: -20px; */
 }
 .search svg {
   font-size: 38px;
@@ -76,7 +76,7 @@
 }
 .orderContainer {
   max-width: 450px;
-  gap: 10px;
+  gap: 15px;
   padding-right: 15px;
 }
 .orderContainer a {
@@ -84,7 +84,7 @@
   color: white;
 }
 .orderContainer p {
-  font-size: 10px;
+  font-size: 14px;
 }
 .flag {
   width: 100px;

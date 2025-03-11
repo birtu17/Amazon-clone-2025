@@ -3,7 +3,7 @@ import { FadeLoader } from "react-spinners";
 const Loader = () => {
   return (
     <div className={style.adjustment}>
-      <FadeLoader color="#36D6AB" />
+      <FadeLoader color="#36D6AB" size={12} />
     </div>
   );
 };

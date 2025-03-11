@@ -5,9 +5,14 @@ import React, { useContext, useState } from "react";
 import ProductCard from "../../components/Product/ProductCard";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import CurrencyFormat from "../../components/CurrencyFormat/CurrencyFormat";
+import { axiosInstance } from "../../Api/axios";
+import Loader from "../../components/Loader/Loader";
+import { db } from "../../Utility/fireBase";
+import { useNavigate } from "react-router";
+import { Type } from "../../Utility/action.type";
 
 const Payment = () => {
-  const [{ user, basket }] = useContext(DataContext);
+  const [{ user, basket }, dispatch] = useContext(DataContext);
   console.log(user);
 
   const totalItem = basket?.reduce((amount, item) => item.amount + amount, 0);
@@ -17,15 +22,44 @@ const Payment = () => {
   }, 0);
 
   const [cardError, setCardError] = useState(null);
+  const [processing, setProcessing] = useState(false);
   const stripe = useStripe();
   const elements = useElements();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     e?.error?.message ? setCardError(e?.error?.message) : setCardError("");
   };
 
-  const handlePayment = (e) => {
+  const handlePayment = async (e) => {
     e.preventDefault();
+    setProcessing(true);
+    try {
+      const response = await axiosInstance({
+        method: "POST",
+        url: `/payment/create?total=${total * 100}`,
+      });
+      const clientSecret = response.data?.clientSecret;
+      const { paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
+        payment_method: { card: elements.getElement(CardElement) },
+      });
+      await db
+        .collection("users")
+        .doc(user.uid)
+        .collection("orders")
+        .doc(paymentIntent.id)
+        .set({
+          basket: basket,
+          amount: paymentIntent.amount,
+          created: paymentIntent.created,
+        });
+      dispatch({ type: Type.EMPTY_BASKET });
+      setProcessing(false);
+      navigate("/order", { state: { msg: "you have placed new order" } });
+    } catch (error) {
+      console.error(error);
+      setProcessing(false);
+    }
   };
   return (
     <LayOut>
@@ -65,7 +99,16 @@ const Payment = () => {
                       <CurrencyFormat amount={total} />
                     </span>
                   </div>
-                  <button>Pay Now</button>
+                  <button type="submit">
+                    {processing ? (
+                      <div className={style.loader}>
+                        <Loader size={12} />
+                        <p>Please wait ...</p>
+                      </div>
+                    ) : (
+                      "Pay Now"
+                    )}
+                  </button>
                 </div>
               </form>
             </div>
