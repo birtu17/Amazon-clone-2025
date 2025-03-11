@@ -7,9 +7,9 @@
   font-family: var(--font-family);
 }
 
-/* body {
-  background-color: #e3e6e6;
-} */
+body {
+  overflow-x: hidden; 
+}
 
 :root {
   --primary-color: #febd69;
