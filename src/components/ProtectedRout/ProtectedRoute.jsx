@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router";
 import { DataContext } from "../DataProvider/DataProvider";
 
-const ProtectedRout = ({ children, msg, redirect }) => {
+const ProtectedRoute = ({ children, msg, redirect }) => {
   const navigate = useNavigate();
   const [{ user }, dispatch] = useContext(DataContext);
   useEffect(() => {
@@ -13,4 +13,4 @@ const ProtectedRout = ({ children, msg, redirect }) => {
   return children;
 };
 
-export default ProtectedRout;
+export default ProtectedRoute;

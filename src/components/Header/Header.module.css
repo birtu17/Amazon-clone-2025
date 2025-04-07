@@ -1,5 +1,4 @@
 /* Header component css */
-
 .stickyHeader {
   position: sticky;
   top: 0;
@@ -54,18 +53,19 @@
 }
 .search select {
   border: none;
-  background-color: #dfdfdf;
+  /* background-color: #dfdfdf; */
 }
 .search input {
   border: 1px solid white;
-  width: 90%;
+  width: 100%;
   /* margin-right: -20px; */
+  margin-right: -2px;
 }
 .search svg {
   font-size: 38px;
-  padding: 8px;
+  padding: 7px;
   background: #febd69;
-  font-weight: bolder;
+  /* font-weight: bolder; */
   color: #1a1a1a;
 }
 .search svg:hover {
@@ -76,15 +76,15 @@
 }
 .orderContainer {
   max-width: 450px;
-  gap: 15px;
-  padding-right: 15px;
+  gap: 10px;
+  /* padding-right: 15px; */
 }
 .orderContainer a {
   text-decoration: none;
   color: white;
 }
 .orderContainer p {
-  font-size: 14px;
+  font-size: 10px;
 }
 .flag {
   width: 100px;

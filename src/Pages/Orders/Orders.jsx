@@ -2,7 +2,7 @@ import LayOut from "../../components/LayOut/LayOut";
 import style from "./Orders.module.css";
 import { db } from "../../Utility/fireBase";
 import { DataContext } from "../../components/DataProvider/DataProvider";
-import { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ProductCard from "../../components/Product/ProductCard";
 
 const Orders = () => {
@@ -28,18 +28,20 @@ const Orders = () => {
       <section className={style.container}>
         <div className={style.ordersContainer}>
           <h2>Your Orders</h2>
-          {orders?.length==0&&<div className={style.noOrder}>
-            you don't have orders yet.
-          </div>}
+          {orders?.length == 0 && (
+            <div className={style.noOrder}>you don't have orders yet.</div>
+          )}
           <div>
             {orders?.map((eachOrder, i) => {
               return (
                 <div key={i}>
                   <hr />
                   <p>Order ID:{eachOrder?.id}</p>
-                  {eachOrder?.data?.basket?.map((order) => 
-                    ( <ProductCard flex={true} product={order} key={order.id} />)
-                  )}
+                  {eachOrder?.data?.basket?.map((order) => {
+                    return (
+                      <ProductCard flex={true} product={order} key={order.id} />
+                    );
+                  })}
                 </div>
               );
             })}

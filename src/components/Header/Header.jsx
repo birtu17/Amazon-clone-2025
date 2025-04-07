@@ -18,11 +18,13 @@ const Header = () => {
     <section className={style.stickyHeader}>
       <section>
         <div className={style.headerContainer}>
+          {/* logo */}
           <div className={style.logoContainer}>
             <Link to="/">
               <img src={logo} alt="Amazon logo" />
             </Link>
             <div className={style.delivery}>
+              {/* delivery */}
               <span>
                 <LuMapPin />
               </span>
@@ -34,13 +36,16 @@ const Header = () => {
           </div>
 
           <div className={style.search}>
+            {/* All,search and input */}
             <select name="" id="">
               <option value="">All</option>
             </select>
             <input type="text" name="" id="" placeholder="search product" />
+            {/* icon */}
             <BsSearch />
           </div>
           <div className={style.orderContainer}>
+            {/* right side links */}
             <Link className={style.flag}>
               <img src={flag} alt="" />
               <select name="" id="">
@@ -60,10 +65,6 @@ const Header = () => {
                     <span>Account & Lists</span>
                   </>
                 )}
-              </div>
-              <div>
-                {/* <p>Sign In</p> */}
-                {/* <span>Account and Lists</span> */}
               </div>
             </Link>
             <Link to="/order">

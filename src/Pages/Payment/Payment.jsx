@@ -6,16 +6,16 @@ import ProductCard from "../../components/Product/ProductCard";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import CurrencyFormat from "../../components/CurrencyFormat/CurrencyFormat";
 import { axiosInstance } from "../../Api/axios";
-import Loader from "../../components/Loader/Loader";
 import { db } from "../../Utility/fireBase";
 import { useNavigate } from "react-router";
 import { Type } from "../../Utility/action.type";
+import { ClipLoader } from "react-spinners";
 
 const Payment = () => {
   const [{ user, basket }, dispatch] = useContext(DataContext);
-  console.log(user);
-
-  const totalItem = basket?.reduce((amount, item) => item.amount + amount, 0);
+  const totalItem = basket?.reduce((amount, item) => {
+    return item.amount + amount;
+  }, 0);
 
   const total = basket.reduce((amount, item) => {
     return item.price * item.amount + amount;
@@ -33,21 +33,23 @@ const Payment = () => {
 
   const handlePayment = async (e) => {
     e.preventDefault();
-    setProcessing(true);
     try {
+      setProcessing(true);
       const response = await axiosInstance({
         method: "POST",
         url: `/payment/create?total=${total * 100}`,
       });
       const clientSecret = response.data?.clientSecret;
       const { paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
-        payment_method: { card: elements.getElement(CardElement) },
+        payment_method: {
+          card: elements.getElement(CardElement),
+        },
       });
       await db
         .collection("users")
         .doc(user.uid)
         .collection("orders")
-        .doc(paymentIntent.id)
+        .doc("paymentIntent.id")
         .set({
           basket: basket,
           amount: paymentIntent.amount,
@@ -57,7 +59,7 @@ const Payment = () => {
       setProcessing(false);
       navigate("/order", { state: { msg: "you have placed new order" } });
     } catch (error) {
-      console.error(error);
+      console.log(error);
       setProcessing(false);
     }
   };
@@ -102,7 +104,7 @@ const Payment = () => {
                   <button type="submit">
                     {processing ? (
                       <div className={style.loader}>
-                        <Loader size={12} />
+                        <ClipLoader color="gray" size={12} />
                         <p>Please wait ...</p>
                       </div>
                     ) : (

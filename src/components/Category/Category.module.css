@@ -1,4 +1,3 @@
-
 .category {
   height: 350px;
   width: 350px;
@@ -12,16 +11,17 @@
   max-height: 250px;
   padding: 0px 10px;
 }
+
 .category a {
   text-decoration: none;
   color: rgb(35, 35, 35);
 }
+
 .category h3,
 .category p {
   padding: 5px;
   margin-left: 15px;
 }
-
 
 .category p {
   font-size: 12px;
@@ -29,11 +29,25 @@
   color: rgb(9, 132, 209);
 }
 
-/* CategoryMain css */
+/* CategoryMain CSS */
 .categoryContainer {
   position: relative;
   margin-top: -10%;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, 1fr); 
   place-items: center;
+  /* gap: 20px; */
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .categoryContainer {
+    grid-template-columns: repeat(2, 1fr); 
+  }
+}
+
+@media (max-width: 480px) {
+  .categoryContainer {
+    grid-template-columns: 1fr; 
+  }
 }
